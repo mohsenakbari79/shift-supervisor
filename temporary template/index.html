@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+
+		
+	<!-- Mirrored from themesbrand.com/skote-django/layouts/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 23 Nov 2021 13:25:19 GMT -->
+	<head>
+		
+		<meta charset="utf-8" />
+		<title>Dashboard | Shift Supervisor</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+		<meta content="Themesbrand" name="author" />
+		<!-- App favicon -->
+		<link rel="shortcut icon" href="assets/images/favicon.ico">
+
+		<!-- Bootstrap Css -->
+		<link href="assets/css/bootstrap.rtl.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+		<!-- Icons Css -->
+		<link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
+		<!-- App Css-->
+		<link href="assets/css/app.rtl.css" id="app-style" rel="stylesheet" type="text/css" />
+
+	</head>
+
+	<body data-sidebar="dark">
+
+
+			<!-- Begin page -->
+		<div id="layout-wrapper">
+
+			
+			<header id="page-topbar">
+				<div class="navbar-header" >
+					<div class="d-flex" >
+						<!-- LOGO -->
+						<div class="navbar-brand-box">
+							<a class="logo logo-light">
+								<span>
+									<img src="assets/images/logonew.png" alt="" height="72" >
+								</span>
+							</a>
+						</div>
+
+					</div>
+
+					<div class="d-flex">
+
+
+						
+
+						<div class="dropdown d-inline-block">
+							<button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+							data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+								<span class="d-none d-xl-inline-block ms-1" key="t-henry">امیر جمشیدی جم</span>
+								<i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+							</button>
+							<div class="dropdown-menu dropdown-menu-end">
+								<!-- item-->
+								<a class="dropdown-item" href="#"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile">پروفایل</span></a>
+								<a class="dropdown-item" href="#"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-lock-screen">تغییر رمز عبور</span></a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item text-danger" href="#"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">خروج</span></a>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</header>
+
+			<div class="vertical-menu">
+				<div data-simplebar class="h-100">
+					<!--- Sidemenu -->
+					<div id="sidebar-menu">
+						<!-- Left Menu Start -->
+						<ul class="metismenu list-unstyled" id="side-menu">
+							<li class="menu-title" key="t-menu">بخش ها</li>
+
+							<li>
+								<a href="javascript: void(0);" class="has-arrow waves-effect">
+									<i class="mdi mdi-office-building"></i>
+									<span key="t-dashboards">BTX</span>
+								</a>
+								<ul class="sub-menu" aria-expanded="false">
+									<li><a href="index-2.html" key="t-default">U-500</a></li>
+									<li><a href="dashboard-saas.html" key="t-saas">U-600</a></li>
+									<li><a href="dashboard-crypto.html" key="t-crypto">U-650</a></li>
+								</ul>
+							</li>
+							
+							<li>
+								<a href="javascript: void(0);" class="has-arrow waves-effect">
+									<i class="mdi mdi-office-building"></i>
+									<span key="t-dashboards">PX</span>
+								</a>
+								<ul class="sub-menu" aria-expanded="false">
+									<li><a href="index-2.html" key="t-default">U-400</a></li>
+									<li><a href="dashboard-saas.html" key="t-saas">U-700</a></li>
+									<li><a href="dashboard-crypto.html" key="t-crypto">U-800</a></li>
+									<li><a href="dashboard-crypto.html" key="t-crypto">U-950</a></li>
+								</ul>
+							</li>
+							
+							<li>
+								<a href="javascript: void(0);" class="has-arrow waves-effect">
+									<i class="mdi mdi-office-building"></i>
+									<span key="t-dashboards">Reforming</span>
+								</a>
+								<ul class="sub-menu" aria-expanded="false">
+									<li><a href="index-2.html" key="t-default">U-100</a></li>
+									<li><a href="dashboard-saas.html" key="t-saas">U-200</a></li>
+									<li><a href="dashboard-crypto.html" key="t-crypto">U-250</a></li>
+									<li><a href="dashboard-crypto.html" key="t-crypto">U-300</a></li>
+									<li><a href="dashboard-crypto.html" key="t-crypto">U-350</a></li>
+								</ul>
+							</li>
+							
+							
+							<li>
+								<a href="javascript: void(0);" class="has-arrow waves-effect">
+
+									<i class="mdi mdi-diving-scuba-tank-multiple"></i>
+									<span key="t-dashboards">مخازن</span>
+								</a>
+								<ul class="sub-menu" aria-expanded="false">
+								</ul>
+							</li>
+							
+							<li>
+								<a href="javascript: void(0);" class="has-arrow waves-effect">
+									<i class="mdi mdi-ship-wheel"></i>
+									<span key="t-dashboards">حواله کشتی</span>
+								</a>
+								<ul class="sub-menu" aria-expanded="false">
+								</ul>
+							</li>
+
+
+							<li class="menu-title" key="t-apps">گزارشات</li>
+
+							<li>
+								<a href="javascript: void(0);" class="waves-effect">
+									<i class="fa fa-industry"></i>
+									<span key="t-dashboards">تولید</span>
+								</a>
+							</li>
+							<li>
+								<a href="javascript: void(0);" class="waves-effect">
+									<i class="bx bx-calendar"></i>
+									<span key="t-dashboards">بهره برداری کشیک مجتمع</span>
+								</a>
+							</li>
+							
+							<li>
+								<a href="javascript: void(0);" class="waves-effect">
+									<i class="mdi mdi-book-clock"></i>
+									<span key="t-dashboards">12 ساعته</span>
+								</a>
+							</li>
+							
+							
+							<li class="menu-title" key="t-apps">مدیریت</li>
+
+							<li>
+								<a href="javascript: void(0);" class="waves-effect">
+									<i class="dripicons-user-group"></i>
+									<span key="t-dashboards">کاربران</span>
+								</a>
+							</li>
+							<li>
+								<a href="javascript: void(0);" class="waves-effect">
+									<i class="mdi mdi-login-variant"></i>
+									<span key="t-dashboards">دسترسی ها</span>
+								</a>
+							</li>
+						
+						</ul>
+					</div>
+					<!-- Sidebar -->
+				</div>
+			</div>
+
+
+			<div class="main-content">
+
+				<div class="page-content">
+					<div class="container-fluid">
+
+						<!-- start page title -->
+						<div class="row">
+							<div class="col-12">
+								<div class="page-title-box d-sm-flex align-items-center justify-content-between">
+									<h4 class="mb-sm-0 font-size-18">داشبورد</h4>
+
+
+								</div>
+							</div>
+						</div>
+						<!-- end page title -->
+
+						<div class="row">
+							
+							<div class="col-xl-12">
+								<div class="row">
+									<div class="col-md-4">
+										<div class="card mini-stats-wid">
+											<div class="card-body">
+												<div class="d-flex">
+													<div class="flex-grow-1">
+														<p class="text-muted fw-medium">تولید</p>
+														<h4 class="mb-0">1,235 تن</h4>
+													</div>
+
+													<div class="flex-shrink-0 align-self-center">
+														<div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
+															<span class="avatar-title">
+																<i class="bx bx-copy-alt font-size-24"></i>
+															</span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="card mini-stats-wid">
+											<div class="card-body">
+												<div class="d-flex">
+													<div class="flex-grow-1">
+														<p class="text-muted fw-medium">مصرف</p>
+														<h4 class="mb-0">35 تن</h4>
+													</div>
+
+													<div class="flex-shrink-0 align-self-center ">
+														<div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
+															<span class="avatar-title rounded-circle bg-primary">
+																<i class="bx bx-archive-in font-size-24"></i>
+															</span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="card mini-stats-wid">
+											<div class="card-body">
+												<div class="d-flex">
+													<div class="flex-grow-1">
+														<p class="text-muted fw-medium">فروش</p>
+														<h4 class="mb-0">$16M</h4>
+													</div>
+
+													<div class="flex-shrink-0 align-self-center">
+														<div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
+															<span class="avatar-title rounded-circle bg-primary">
+																<i class="bx bx-purchase-tag-alt font-size-24"></i>
+															</span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- end row -->
+
+
+								<div class="row">
+									<div class="col-xl-6">
+										<div class="card">
+											<div class="card-body">
+												<h4 class="card-title mb-4">Line with Data Labels</h4>
+
+												<div id="line_chart_datalabel" class="apex-charts" dir="ltr"></div>                              
+											</div>
+										</div><!--end card-->
+									</div>
+
+									<div class="col-xl-6">
+										<div class="card">
+											<div class="card-body">
+												<h4 class="card-title mb-4">Dashed Line</h4>
+												
+												<div id="line_chart_dashed" class="apex-charts" dir="ltr"></div>        
+											</div>
+										</div><!--end card-->
+									</div>
+								</div>
+								<!-- end row -->
+
+								<div class="row">
+									<div class="col-xl-6">
+										<div class="card">
+											<div class="card-body">
+												<h4 class="card-title mb-4">Spline Area</h4>
+
+												<div id="spline_area" class="apex-charts" dir="ltr"></div>                      
+											</div>
+										</div><!--end card-->
+									</div>
+
+									<div class="col-xl-6">
+										<div class="card">
+											<div class="card-body">
+												<h4 class="card-title mb-4">Column Chart</h4>
+												
+												<div id="column_chart" class="apex-charts" dir="ltr"></div>                                      
+											</div>
+										</div><!--end card-->
+									</div>
+								</div>
+								<!-- end row -->
+
+								<div class="row">
+									<div class="col-xl-6">
+										<div class="card">
+											<div class="card-body">
+												<h4 class="card-title mb-4">Column with Data Labels</h4>
+												
+												<div id="column_chart_datalabel" class="apex-charts" dir="ltr"></div>
+											</div>
+										</div><!--end card-->
+									</div>
+									<div class="col-xl-6">
+										<div class="card">
+											<div class="card-body">
+												<h4 class="card-title mb-4">Bar Chart</h4>
+												
+												<div id="bar_chart" class="apex-charts" dir="ltr"></div>
+											</div>
+										</div><!--end card-->
+									</div>
+								</div>  
+								<!-- end row -->
+
+								<div class="row">
+									<div class="col-xl-6">
+										<div class="card">
+											<div class="card-body">
+												<h4 class="card-title mb-4">Line, Column & Area Chart</h4>
+												
+												<div id="mixed_chart" class="apex-charts" dir="ltr"></div> 
+											</div>
+										</div><!--end card-->
+									</div>
+									<div class="col-xl-6">
+										<div class="card">
+											<div class="card-body">
+												<h4 class="card-title mb-4">Radial Chart</h4>
+												
+												<div id="radial_chart" class="apex-charts" dir="ltr"></div>  
+											</div>
+										</div><!--end card-->
+										
+									</div>
+								</div>
+								<!-- end row -->
+
+								<div class="row">
+									<div class="col-xl-6">
+										<div class="card">
+											<div class="card-body">
+												<h4 class="card-title mb-4">Pie Chart</h4>
+												
+												<div id="pie_chart" class="apex-charts" dir="ltr"></div>
+											</div>
+										</div>
+									</div>
+									<!-- end col -->
+									
+									<div class="col-xl-6">
+										<div class="card">
+											<div class="card-body">
+												<h4 class="card-title mb-4">Donut Chart</h4>
+												
+												<div id="donut_chart" class="apex-charts"  dir="ltr"></div>
+											</div>
+										</div>
+									</div>
+									<!-- end col -->
+								</div>
+								<!-- end row -->								
+
+
+								<div class="card">
+									<div class="card-body">
+										<div class="d-sm-flex flex-wrap">
+											<h4 class="card-title mb-4">Email Sent</h4>
+											<div class="ms-auto">
+												<ul class="nav nav-pills">
+													<li class="nav-item">
+														<a class="nav-link" href="#">Week</a>
+													</li>
+													<li class="nav-item">
+														<a class="nav-link" href="#">Month</a>
+													</li>
+													<li class="nav-item">
+														<a class="nav-link active" href="#">Year</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+										
+										<div id="stacked-column-chart" class="apex-charts" dir="ltr"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- end row -->
+						
+						<div class="card">
+							<div class="card-body">
+								<h4 class="card-title mb-4">Latest Transaction</h4>
+								<div class="table-responsive">
+									<table class="table align-middle table-nowrap mb-0">
+										<thead class="table-light">
+											<tr>
+												<th style="width: 20px;">
+													<div class="form-check font-size-16 align-middle">
+														<input class="form-check-input" type="checkbox" id="transactionCheck01">
+														<label class="form-check-label" for="transactionCheck01"></label>
+													</div>
+												</th>
+												<th class="align-middle">Order ID</th>
+												<th class="align-middle">Billing Name</th>
+												<th class="align-middle">Date</th>
+												<th class="align-middle">Total</th>
+												<th class="align-middle">Payment Status</th>
+												<th class="align-middle">Payment Method</th>
+												<th class="align-middle">View Details</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>
+													<div class="form-check font-size-16">
+														<input class="form-check-input" type="checkbox" id="transactionCheck02">
+														<label class="form-check-label" for="transactionCheck02"></label>
+													</div>
+												</td>
+												<td><a href="javascript: void(0);" class="text-body fw-bold">#SK2540</a> </td>
+												<td>Neal Matthews</td>
+												<td>
+													07 Oct, 2019
+												</td>
+												<td>
+													$400
+												</td>
+												<td>
+													<span class="badge badge-pill badge-soft-success font-size-11">Paid</span>
+												</td>
+												<td>
+													<i class="fab fa-cc-mastercard me-1"></i> Mastercard
+												</td>
+												<td>
+													<!-- Button trigger modal -->
+													<button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
+														View Details
+													</button>
+												</td>
+											</tr>
+
+											<tr>
+												<td>
+													<div class="form-check font-size-16">
+														<input class="form-check-input" type="checkbox" id="transactionCheck03">
+														<label class="form-check-label" for="transactionCheck03"></label>
+													</div>
+												</td>
+												<td><a href="javascript: void(0);" class="text-body fw-bold">#SK2541</a> </td>
+												<td>Jamal Burnett</td>
+												<td>
+													07 Oct, 2019
+												</td>
+												<td>
+													$380
+												</td>
+												<td>
+													<span class="badge badge-pill badge-soft-danger font-size-11">Chargeback</span>
+												</td>
+												<td>
+													<i class="fab fa-cc-visa me-1"></i> Visa
+												</td>
+												<td>
+													<!-- Button trigger modal -->
+													<button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
+														View Details
+													</button>
+												</td>
+											</tr>
+
+											<tr>
+												<td>
+													<div class="form-check font-size-16">
+														<input class="form-check-input" type="checkbox" id="transactionCheck04">
+														<label class="form-check-label" for="transactionCheck04"></label>
+													</div>
+												</td>
+												<td><a href="javascript: void(0);" class="text-body fw-bold">#SK2542</a> </td>
+												<td>Juan Mitchell</td>
+												<td>
+													06 Oct, 2019
+												</td>
+												<td>
+													$384
+												</td>
+												<td>
+													<span class="badge badge-pill badge-soft-success font-size-11">Paid</span>
+												</td>
+												<td>
+													<i class="fab fa-cc-paypal me-1"></i> Paypal
+												</td>
+												<td>
+													<!-- Button trigger modal -->
+													<button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
+														View Details
+													</button>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div class="form-check font-size-16">
+														<input class="form-check-input" type="checkbox" id="transactionCheck05">
+														<label class="form-check-label" for="transactionCheck05"></label>
+													</div>
+												</td>
+												<td><a href="javascript: void(0);" class="text-body fw-bold">#SK2543</a> </td>
+												<td>Barry Dick</td>
+												<td>
+													05 Oct, 2019
+												</td>
+												<td>
+													$412
+												</td>
+												<td>
+													<span class="badge badge-pill badge-soft-success font-size-11">Paid</span>
+												</td>
+												<td>
+													<i class="fab fa-cc-mastercard me-1"></i> Mastercard
+												</td>
+												<td>
+													<!-- Button trigger modal -->
+													<button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
+														View Details
+													</button>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div class="form-check font-size-16">
+														<input class="form-check-input" type="checkbox" id="transactionCheck06">
+														<label class="form-check-label" for="transactionCheck06"></label>
+													</div>
+												</td>
+												<td><a href="javascript: void(0);" class="text-body fw-bold">#SK2544</a> </td>
+												<td>Ronald Taylor</td>
+												<td>
+													04 Oct, 2019
+												</td>
+												<td>
+													$404
+												</td>
+												<td>
+													<span class="badge badge-pill badge-soft-warning font-size-11">Refund</span>
+												</td>
+												<td>
+													<i class="fab fa-cc-visa me-1"></i> Visa
+												</td>
+												<td>
+													<!-- Button trigger modal -->
+													<button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
+														View Details
+													</button>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div class="form-check font-size-16">
+														<input class="form-check-input" type="checkbox" id="transactionCheck07">
+														<label class="form-check-label" for="transactionCheck07"></label>
+													</div>
+												</td>
+												<td><a href="javascript: void(0);" class="text-body fw-bold">#SK2545</a> </td>
+												<td>Jacob Hunter</td>
+												<td>
+													04 Oct, 2019
+												</td>
+												<td>
+													$392
+												</td>
+												<td>
+													<span class="badge badge-pill badge-soft-success font-size-11">Paid</span>
+												</td>
+												<td>
+													<i class="fab fa-cc-paypal me-1"></i> Paypal
+												</td>
+												<td>
+													<!-- Button trigger modal -->
+													<button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
+														View Details
+													</button>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<!-- end table-responsive -->
+							</div>
+						</div>
+					</div>
+				</div>
+						<!-- end row -->
+			</div>
+					<!-- container-fluid -->
+		</div>
+
+
+
+		<footer class="footer">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-6">
+						<script>document.write(new Date().getFullYear())</script> © IYI.
+					</div>
+					<div class="col-sm-6">
+						<div class="text-sm-end d-none d-sm-block">
+							Design & Develop by IYI
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+
+
+		<!-- JAVASCRIPT -->
+		<script src="assets/libs/jquery/jquery.min.js"></script>
+		<script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="assets/libs/metismenu/metisMenu.min.js"></script>
+		<script src="assets/libs/simplebar/simplebar.min.js"></script>
+		<script src="assets/libs/node-waves/waves.min.js"></script>
+
+		<!-- apexcharts -->
+		<script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+
+		<!-- dashboard init -->
+		<script src="assets/js/pages/dashboard.init.js"></script>
+
+		<!-- App js -->
+		<script src="assets/js/app.js"></script>
+
+
+		<!-- apexcharts init -->
+		<script src="assets/js/pages/apexcharts.init.js"></script>
+
+
+		
+	</body>
+
+
+	<!-- Mirrored from themesbrand.com/skote-django/layouts/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 23 Nov 2021 13:26:17 GMT -->
+</html>
