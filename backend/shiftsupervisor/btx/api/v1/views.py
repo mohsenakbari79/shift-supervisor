@@ -40,6 +40,8 @@ class DailyDataBtxViewSet(viewsets.ModelViewSet):
     queryset = DailyDataBtx.objects.all()
     serializer_class = DailyDataBtxSerializer
     permission_classes = [IsAuthenticated]  # فرض بر این که فقط کاربران لاگین کرده بتوانند داده‌ها را مشاهده کنند
+    pagination_class = DefaultPagination
+
 
     def perform_create(self, serializer):
         profile = Profile.objects.get(user=self.request.user) 

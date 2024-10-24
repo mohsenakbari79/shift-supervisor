@@ -46,7 +46,7 @@ class U600Serializer(serializers.ModelSerializer):
     def create(self, validated_data):
         # محاسبه‌ی capacity_percent 
         tk_6001_bt_from_sec_500 = validated_data.get('tk_6001_bt_from_sec_500')
-        validated_data['tk_6001_bt_from_sec_500'] = (tk_6001_bt_from_sec_500 /80.954) * 100
+        validated_data['capacity_percent'] = (tk_6001_bt_from_sec_500 /80.954) * 100
         return super().create(validated_data)
 
     def update(self, instance, validated_data):
@@ -66,7 +66,7 @@ class U650Serializer(serializers.ModelSerializer):
     def create(self, validated_data):
         # محاسبه‌ی capacity_percent 
         t_6501_feed_rate = validated_data.get('t_6501_feed_rate')
-        validated_data['t_6501_feed_rate'] = (tk_6001_bt_from_sec_500 /76.691) * 100
+        validated_data['capacity_percent'] = (tk_6001_bt_from_sec_500 /76.691) * 100
         return super().create(validated_data)
 
     def update(self, instance, validated_data):

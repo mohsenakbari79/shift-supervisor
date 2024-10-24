@@ -27,11 +27,11 @@ from drf_yasg import openapi
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="Blog Api",
+        title="Shift Api",
         default_version="v1",
-        description="this is a test api for maktabkhooneh project",
+        description="this is a test api for Shiftsupervisor ",
         terms_of_service="https://www.google.com/policies/terms/",
-        contact=openapi.Contact(email="bigdeli.ali3@gmail.com"),
+        contact=openapi.Contact(email="malevin2020@gmail.com"),
         license=openapi.License(name="MIT License"),
     ),
     public=True,
@@ -45,7 +45,7 @@ urlpatterns = [
     # my app url 
     
     path("btx/", include("btx.urls")),
-    # path("px/", include("px.urls")),
+    path("px/", include("px.urls")),
     # path("reforming/", include("reforming.urls")),
     # path("tanks/", include("tanks.urls")),
 
