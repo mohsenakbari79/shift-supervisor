@@ -1,6 +1,9 @@
 from django.db import models
 
 
+
+
+
 class BaseUnitPx(models.Model):
     date = models.DateField(null=True, blank=True, verbose_name="تاریخ")
     capacity_percent = models.FloatField(
@@ -313,3 +316,37 @@ class U970(BaseUnitPx):
 
     def __str__(self):
         return f"U-970 Operation on {self.date}"
+
+
+
+
+
+class DailyDataPX(models.Model):
+    user = models.ForeignKey("accounts.Profile",on_delete=models.CASCADE,related_name="user_daily_px")
+    date = models.DateField(verbose_name="تاریخ")
+    u400_data = models.OneToOneField(U400, on_delete=models.CASCADE, null=True, blank=True, related_name="daily_data_u400")
+    u700_data = models.OneToOneField(U700, on_delete=models.CASCADE, null=True, blank=True, related_name="daily_data_u700")
+    u800_data = models.OneToOneField(U800, on_delete=models.CASCADE, null=True, blank=True, related_name="daily_data_u800")
+    u950_data = models.OneToOneField(U950, on_delete=models.CASCADE, null=True, blank=True, related_name="daily_data_u950")
+    u970_data = models.OneToOneField(U970, on_delete=models.CASCADE, null=True, blank=True, related_name="daily_data_u970")
+
+    def clean(self):
+        """ چک کردن اینکه آیا تاریخ‌ها یکسان هستند """
+        if self.u400_data and self.u400_data.date != self.date:
+            raise ValidationError("تاریخ U400 با تاریخ DailyData یکسان نیست.")
+        if self.u700_data and self.u700_data.date != self.date:
+            raise ValidationError("تاریخ U700 با تاریخ DailyData یکسان نیست.")
+        if self.u800_data and self.u800_data.date != self.date:
+            raise ValidationError("تاریخ U800 با تاریخ DailyData یکسان نیست.")
+        if self.u950_data and self.u950_data.date != self.date:
+            raise ValidationError("تاریخ U950 با تاریخ DailyData یکسان نیست.")
+        if self.u970_data and self.u970_data.date != self.date:
+            raise ValidationError("تاریخ U970 با تاریخ DailyData یکسان نیست.")
+
+    def save(self, *args, **kwargs):
+        """ قبل از ذخیره، روش clean را فراخوانی می‌کند """
+        self.clean()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"Daily Data for {self.date}"

@@ -1,6 +1,5 @@
 from django.db import models
-
-# Create your models here.
+from django.core.exceptions import ValidationError
 
 
 class BaseUnitBtx(models.Model):
@@ -236,3 +235,30 @@ class U650(BaseUnitBtx):
 
     def __str__(self):
         return f"U-650 Operation on {self.date}"
+
+
+
+
+class DailyDataBtx(models.Model):
+    user = models.ForeignKey("accounts.Profile",on_delete=models.CASCADE,related_name="user_daily_btx")
+    date = models.DateField(verbose_name="تاریخ")
+    u500_data = models.OneToOneField(U500, on_delete=models.CASCADE, null=True, blank=True, related_name="daily_data_u500")
+    u600_data = models.OneToOneField(U600, on_delete=models.CASCADE, null=True, blank=True, related_name="daily_data_u600")
+    u650_data = models.OneToOneField(U650, on_delete=models.CASCADE, null=True, blank=True, related_name="daily_data_u650")
+
+    def clean(self):
+        """ چک کردن اینکه آیا تاریخ‌ها یکسان هستند """
+        if self.u500_data and self.u500_data.date != self.date:
+            raise ValidationError("تاریخ U500 با تاریخ DailyData یکسان نیست.")
+        if self.u600_data and self.u600_data.date != self.date:
+            raise ValidationError("تاریخ U600 با تاریخ DailyData یکسان نیست.")
+        if self.u650_data and self.u650_data.date != self.date:
+            raise ValidationError("تاریخ U650 با تاریخ DailyData یکسان نیست.")
+
+    def save(self, *args, **kwargs):
+        """ قبل از ذخیره، روش clean را فراخوانی می‌کند """
+        self.clean()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"Daily Data for {self.date}"
