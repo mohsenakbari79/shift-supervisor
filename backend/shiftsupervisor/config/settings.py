@@ -39,11 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     # my app 
+    'accounts.apps.AccountsConfig',
     'btx.apps.BtxConfig',
     'px.apps.PxConfig',
     'reforming.apps.ReformingConfig',
     'tanks.apps.TanksConfig',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -118,8 +120,15 @@ USE_I18N = True
 USE_TZ = True
 
 
+
+# myaccount 
+AUTH_USER_MODEL = "accounts.User"
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
+
+
 
 STATIC_URL = 'static/'
 
