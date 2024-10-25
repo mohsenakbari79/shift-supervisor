@@ -143,54 +143,65 @@ class DailyDataPXSerializer(serializers.ModelSerializer):
 
 
     def create(self, validated_data):
-        """ ایجاد DailyDataBtx به همراه داده‌های مرتبط با U500, U600 و U650 """
         date = validated_data.get('date')
 
+        # جدا کردن داده‌های واحدها از validated_data
         u400_data = validated_data.pop('u400_data', None)
         u700_data = validated_data.pop('u700_data', None)
         u800_data = validated_data.pop('u800_data', None)
         u950_data = validated_data.pop('u950_data', None)
         u970_data = validated_data.pop('u970_data', None)
-       
 
+        u400_instance = None
+        u700_instance = None
+        u800_instance = None
+        u950_instance = None
+        u970_instance = None
+
+        # ایجاد داده برای U400
         if u400_data:
             u400_data['date'] = date
-            u400_instance = U400.objects.create(**u400_data)
-        else:
-            u400_instance = None
+            u400_serializer = U400Serializer(data=u400_data)
+            if u400_serializer.is_valid(raise_exception=True):
+                u400_instance = u400_serializer.save()
 
+        # ایجاد داده برای U700
         if u700_data:
             u700_data['date'] = date
-            u700_instance = U700.objects.create(**u700_data)
-        else:
-            u700_instance = None
+            u700_serializer = U700Serializer(data=u700_data)
+            if u700_serializer.is_valid(raise_exception=True):
+                u700_instance = u700_serializer.save()
 
+        # ایجاد داده برای U800
         if u800_data:
             u800_data['date'] = date
-            u800_instance = U800.objects.create(**u800_data)
-        else:
-            u800_instance = None
-            
+            u800_serializer = U800Serializer(data=u800_data)
+            if u800_serializer.is_valid(raise_exception=True):
+                u800_instance = u800_serializer.save()
+
+        # ایجاد داده برای U950
         if u950_data:
             u950_data['date'] = date
-            u950_instance = U950.objects.create(**u950_data)
-        else:
-            u950_instance = None
-            
+            u950_serializer = U950Serializer(data=u950_data)
+            if u950_serializer.is_valid(raise_exception=True):
+                u950_instance = u950_serializer.save()
+
+        # ایجاد داده برای U970
         if u970_data:
             u970_data['date'] = date
-            u970_instance = U970.objects.create(**u970_data)
-        else:
-            u970_instance = None
+            u970_serializer = U970Serializer(data=u970_data)
+            if u970_serializer.is_valid(raise_exception=True):
+                u970_instance = u970_serializer.save()
 
-        # ایجاد DailyDataBtx
+        # ایجاد DailyDataPX
         daily_data = DailyDataPX.objects.create(
-            u400_data = u400_instance,
-            u700_data = u700_instance,
-            u800_data = u800_instance,
-            u950_data = u950_instance,
-            u970_data = u970_instance,
+            u400_data=u400_instance,
+            u700_data=u700_instance,
+            u800_data=u800_instance,
+            u950_data=u950_instance,
+            u970_data=u970_instance,
             **validated_data
         )
 
         return daily_data
+

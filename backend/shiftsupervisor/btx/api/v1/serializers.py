@@ -66,7 +66,7 @@ class U650Serializer(serializers.ModelSerializer):
     def create(self, validated_data):
         # محاسبه‌ی capacity_percent 
         t_6501_feed_rate = validated_data.get('t_6501_feed_rate')
-        validated_data['capacity_percent'] = (tk_6001_bt_from_sec_500 /76.691) * 100
+        validated_data['capacity_percent'] = (t_6501_feed_rate /76.691) * 100
         return super().create(validated_data)
 
     def update(self, instance, validated_data):
@@ -105,23 +105,29 @@ class DailyDataBtxSerializer(serializers.ModelSerializer):
         u600_data = validated_data.pop('u600_data', None)
         u650_data = validated_data.pop('u650_data', None)
 
+        u500_instance = None
+        u600_instance = None
+        u650_instance = None
+        # ایجاد داده برای U500
         if u500_data:
             u500_data['date'] = date
-            u500_instance = U500.objects.create(**u500_data)
-        else:
-            u500_instance = None
+            u500_serializer = U500Serializer(data=u500_data)
+            if u500_serializer.is_valid(raise_exception=True):
+                u500_instance = u500_serializer.save()
 
+        # ایجاد داده برای U600
         if u600_data:
             u600_data['date'] = date
-            u600_instance = U600.objects.create(**u600_data)
-        else:
-            u600_instance = None
+            u600_serializer = U600Serializer(data=u600_data)
+            if u600_serializer.is_valid(raise_exception=True):
+                u600_instance = u600_serializer.save()
 
+        # ایجاد داده برای U650
         if u650_data:
             u650_data['date'] = date
-            u650_instance = U650.objects.create(**u650_data)
-        else:
-            u650_instance = None
+            u650_serializer = U650Serializer(data=u650_data)
+            if u650_serializer.is_valid(raise_exception=True):
+                u650_instance = u650_serializer.save()
 
         # ایجاد DailyDataBtx
         daily_data = DailyDataBtx.objects.create(

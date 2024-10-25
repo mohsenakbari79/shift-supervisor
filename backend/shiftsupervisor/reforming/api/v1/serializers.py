@@ -142,46 +142,53 @@ class DailyDataReformingSerializer(serializers.ModelSerializer):
             return data
 
     def create(self, validated_data):
-        """ایجاد DailyDataBtx به همراه داده‌های مرتبط با U500, U600 و U650"""
         date = validated_data.get("date")
 
+        # جدا کردن داده‌های هر واحد
         u100_data = validated_data.pop("u100_data", None)
         u200_data = validated_data.pop("u200_data", None)
         u250_data = validated_data.pop("u250_data", None)
         u300_data = validated_data.pop("u300_data", None)
         u350_data = validated_data.pop("u350_data", None)
 
+        # ذخیره‌سازی داده‌های واحدها با استفاده از سریالایزرها
+        u100_instance = None
+        u200_instance = None
+        u250_instance = None
+        u300_instance = None
+        u350_instance = None
+
         if u100_data:
             u100_data["date"] = date
-            u100_instance = Unit100.objects.create(**u100_data)
-        else:
-            u100_instance = None
+            u100_serializer = U100Serializer(data=u100_data)
+            if u100_serializer.is_valid(raise_exception=True):
+                u100_instance = u100_serializer.save()
 
         if u200_data:
             u200_data["date"] = date
-            u200_instance = Unit200.objects.create(**u200_data)
-        else:
-            u200_instance = None
+            u200_serializer = U200Serializer(data=u200_data)
+            if u200_serializer.is_valid(raise_exception=True):
+                u200_instance = u200_serializer.save()
 
         if u250_data:
             u250_data["date"] = date
-            u250_instance = Unit250.objects.create(**u250_data)
-        else:
-            u250_instance = None
+            u250_serializer = U250Serializer(data=u250_data)
+            if u250_serializer.is_valid(raise_exception=True):
+                u250_instance = u250_serializer.save()
 
         if u300_data:
             u300_data["date"] = date
-            u300_instance = Unit300.objects.create(**u300_data)
-        else:
-            u300_instance = None
+            u300_serializer = U300Serializer(data=u300_data)
+            if u300_serializer.is_valid(raise_exception=True):
+                u300_instance = u300_serializer.save()
 
         if u350_data:
             u350_data["date"] = date
-            u350_instance = Unit350.objects.create(**u350_data)
-        else:
-            u350_instance = None
+            u350_serializer = U350Serializer(data=u350_data)
+            if u350_serializer.is_valid(raise_exception=True):
+                u350_instance = u350_serializer.save()
 
-        # ایجاد DailyDataBtx
+        # ایجاد DailyDataReforming
         daily_data = DailyDataReforming.objects.create(
             u100_data=u100_instance,
             u200_data=u200_instance,
