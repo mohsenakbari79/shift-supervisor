@@ -1,21 +1,49 @@
 from django.shortcuts import render
 from reforming.api.v1.serializers import (
-        U100Serializer,
-        U200Serializer,
-        U250Serializer,
-        U300Serializer,
-        U350Serializer,
-        DailyDataReformingSerializer
+    U100Serializer,
+    U200Serializer,
+    U250Serializer,
+    U300Serializer,
+    U350Serializer,
+    DailyDataReformingSerializer,
 )
 from rest_framework.permissions import IsAuthenticated
-from reforming.models import Unit100, Unit200, Unit250, Unit300, Unit350, DailyDataReforming
-from rest_framework import viewsets
+from reforming.models import (
+    Unit100,
+    Unit200,
+    Unit250,
+    Unit300,
+    Unit350,
+    DailyDataReforming,
+)
+from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from reforming.api.v1.paginations import DefaultPagination
 from accounts.models import Profile
+from rest_framework.decorators import action
 
-# Create your views here.
+from config.views import HelpTextViewSet
+
+
+class U100HelpTextViewSet(HelpTextViewSet):
+    model = Unit100
+
+
+class U200HelpTextViewSet(HelpTextViewSet):
+    model = Unit200
+
+
+class U250HelpTextViewSet(HelpTextViewSet):
+    model = Unit250
+
+
+class U300HelpTextViewSet(HelpTextViewSet):
+    model = Unit300
+
+
+class U350HelpTextViewSet(HelpTextViewSet):
+    model = Unit350
 
 
 class U100ModelViewSet(viewsets.ModelViewSet):
