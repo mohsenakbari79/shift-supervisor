@@ -2,9 +2,6 @@ from django.db import models
 from django.core.exceptions import ValidationError
 
 
-
-
-
 class BaseUnitReforming(models.Model):
     date = models.DateField(null=True, blank=True, verbose_name='تاریخ')
     capacity_percent = models.FloatField(
@@ -481,26 +478,26 @@ class Unit350(BaseUnitReforming):
 
 
 
-class DailyDataRaforming(models.Model):
+class DailyDataReforming(models.Model):
     user = models.ForeignKey("accounts.Profile",on_delete=models.CASCADE,related_name="user_daily_reforming")
     date = models.DateField(verbose_name="تاریخ")
-    unit100 = models.OneToOneField(Unit100, on_delete=models.CASCADE, null=True, blank=True, related_name="unit_100")
-    unit200 = models.OneToOneField(Unit200, on_delete=models.CASCADE, null=True, blank=True, related_name="unit_200")
-    unit250 = models.OneToOneField(Unit250, on_delete=models.CASCADE, null=True, blank=True, related_name="unit_250")
-    unit300 = models.OneToOneField(Unit300, on_delete=models.CASCADE, null=True, blank=True, related_name="unit_300")
-    unit350 = models.OneToOneField(Unit350, on_delete=models.CASCADE, null=True, blank=True, related_name="unit_350")
+    u100_data = models.OneToOneField(Unit100, on_delete=models.CASCADE, null=True, blank=True, related_name="unit_100")
+    u200_data = models.OneToOneField(Unit200, on_delete=models.CASCADE, null=True, blank=True, related_name="unit_200")
+    u250_data = models.OneToOneField(Unit250, on_delete=models.CASCADE, null=True, blank=True, related_name="unit_250")
+    u300_data = models.OneToOneField(Unit300, on_delete=models.CASCADE, null=True, blank=True, related_name="unit_300")
+    u350_data = models.OneToOneField(Unit350, on_delete=models.CASCADE, null=True, blank=True, related_name="unit_350")
     
     def clean(self):
         """ چک کردن اینکه آیا تاریخ‌ها یکسان هستند """
-        if self.Unit100 and self.Unit100.date != self.date:
+        if self.u100_data and self.u100_data.date != self.date:
             raise ValidationError("تاریخ U100 با تاریخ DailyData یکسان نیست.")
-        if self.Unit200 and self.Unit200.date != self.date:
+        if self.u200_data and self.u200_data.date != self.date:
             raise ValidationError("تاریخ U200 با تاریخ DailyData یکسان نیست.")
-        if self.Unit250 and self.Unit250.date != self.date:
+        if self.u250_data and self.u250_data.date != self.date:
             raise ValidationError("تاریخ U250 با تاریخ DailyData یکسان نیست.")
-        if self.Unit300 and self.Unit300.date != self.date:
+        if self.u300_data and self.u300_data.date != self.date:
             raise ValidationError("تاریخ U300 با تاریخ DailyData یکسان نیست.")
-        if self.Unit350 and self.Unit350.date != self.date:
+        if self.u350_data and self.u350_data.date != self.date:
             raise ValidationError("تاریخ U350 با تاریخ DailyData یکسان نیست.")
 
     def save(self, *args, **kwargs):
