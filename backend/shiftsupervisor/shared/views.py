@@ -1,7 +1,7 @@
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 
-from config.serializers import ModelHelpTextSerializer
+from shared.serializers import ModelHelpTextSerializer
 
 
 class HelpTextViewSet(viewsets.ReadOnlyModelViewSet):

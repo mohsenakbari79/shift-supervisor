@@ -23,7 +23,7 @@ from reforming.api.v1.paginations import DefaultPagination
 from accounts.models import Profile
 from rest_framework.decorators import action
 
-from config.views import HelpTextViewSet
+from shared.views import HelpTextViewSet
 
 
 class U100HelpTextViewSet(HelpTextViewSet):

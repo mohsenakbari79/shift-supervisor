@@ -17,7 +17,7 @@ from accounts.models import Profile
 
 # Create your views here.
 
-from config.views import HelpTextViewSet
+from shared.views import HelpTextViewSet
 
 
 class U400HelpTextViewSet(HelpTextViewSet):

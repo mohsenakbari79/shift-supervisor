@@ -1,0 +1,168 @@
+.
+├── accounts
+│   ├── admin.py
+│   ├── apps.py
+│   ├── __init__.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       ├── 0001_initial.cpython-312.pyc
+│   │       └── __init__.cpython-312.pyc
+│   ├── models
+│   │   ├── __init__.py
+│   │   ├── profiles.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   ├── profiles.cpython-312.pyc
+│   │   │   └── users.cpython-312.pyc
+│   │   └── users.py
+│   ├── models.py
+│   ├── __pycache__
+│   │   ├── admin.cpython-312.pyc
+│   │   ├── apps.cpython-312.pyc
+│   │   └── __init__.cpython-312.pyc
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── btx
+│   ├── admin.py
+│   ├── api
+│   │   └── v1
+│   │       ├── excel_views.py
+│   │       ├── filters.py
+│   │       ├── paginations.py
+│   │       ├── __pycache__
+│   │       ├── serializers.py
+│   │       ├── urls.py
+│   │       └── views.py
+│   ├── apps.py
+│   ├── __init__.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   ├── 0002_alter_u500_bt_rate_alter_u500_bt_water_content_and_more.py
+│   │   ├── 0003_dailydatabtx.py
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       ├── 0001_initial.cpython-312.pyc
+│   │       ├── 0002_alter_u500_bt_rate_alter_u500_bt_water_content_and_more.cpython-312.pyc
+│   │       ├── 0003_dailydatabtx.cpython-312.pyc
+│   │       └── __init__.cpython-312.pyc
+│   ├── models.py
+│   ├── __pycache__
+│   │   ├── admin.cpython-312.pyc
+│   │   ├── apps.cpython-312.pyc
+│   │   ├── __init__.cpython-312.pyc
+│   │   ├── models.cpython-312.pyc
+│   │   └── urls.cpython-312.pyc
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── config
+│   ├── asgi.py
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-312.pyc
+│   │   ├── serializers.cpython-312.pyc
+│   │   ├── settings.cpython-312.pyc
+│   │   ├── urls.cpython-312.pyc
+│   │   ├── views.cpython-312.pyc
+│   │   └── wsgi.cpython-312.pyc
+│   ├── serializers.py
+│   ├── settings.py
+│   ├── urls.py
+│   ├── views.py
+│   └── wsgi.py
+├── db.sqlite3
+├── manage.py
+├── project_structure.txt
+├── px
+│   ├── admin.py
+│   ├── api
+│   │   └── v1
+│   │       ├── excel_views.py
+│   │       ├── filters.py
+│   │       ├── paginations.py
+│   │       ├── __pycache__
+│   │       ├── serializers.py
+│   │       ├── urls.py
+│   │       └── views.py
+│   ├── apps.py
+│   ├── __init__.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   ├── 0002_alter_u400_bz_t_4001_bott_and_more.py
+│   │   ├── 0003_dailydatapx.py
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       ├── 0001_initial.cpython-312.pyc
+│   │       ├── 0002_alter_u400_bz_t_4001_bott_and_more.cpython-312.pyc
+│   │       ├── 0003_dailydatapx.cpython-312.pyc
+│   │       └── __init__.cpython-312.pyc
+│   ├── models.py
+│   ├── __pycache__
+│   │   ├── admin.cpython-312.pyc
+│   │   ├── apps.cpython-312.pyc
+│   │   ├── __init__.cpython-312.pyc
+│   │   ├── models.cpython-312.pyc
+│   │   └── urls.cpython-312.pyc
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── __pycache__
+│   └── manage.cpython-312.pyc
+├── reforming
+│   ├── admin.py
+│   ├── api
+│   │   └── v1
+│   │       ├── excel_views.py
+│   │       ├── filters.py
+│   │       ├── paginations.py
+│   │       ├── __pycache__
+│   │       ├── serializers.py
+│   │       ├── urls.py
+│   │       └── views.py
+│   ├── apps.py
+│   ├── __init__.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   ├── 0002_dailydataraforming.py
+│   │   ├── 0003_rename_dailydataraforming_dailydatareforming.py
+│   │   ├── 0004_rename_unit100_dailydatareforming_u100_data_and_more.py
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       ├── 0001_initial.cpython-312.pyc
+│   │       ├── 0002_dailydataraforming.cpython-312.pyc
+│   │       ├── 0003_rename_dailydataraforming_dailydatareforming.cpython-312.pyc
+│   │       ├── 0004_rename_unit100_dailydatareforming_u100_data_and_more.cpython-312.pyc
+│   │       └── __init__.cpython-312.pyc
+│   ├── models.py
+│   ├── __pycache__
+│   │   ├── admin.cpython-312.pyc
+│   │   ├── apps.cpython-312.pyc
+│   │   ├── __init__.cpython-312.pyc
+│   │   ├── models.cpython-312.pyc
+│   │   └── urls.cpython-312.pyc
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+└── tanks
+    ├── admin.py
+    ├── apps.py
+    ├── __init__.py
+    ├── migrations
+    │   ├── __init__.py
+    │   └── __pycache__
+    │       └── __init__.cpython-312.pyc
+    ├── models.py
+    ├── __pycache__
+    │   ├── admin.cpython-312.pyc
+    │   ├── apps.cpython-312.pyc
+    │   ├── __init__.cpython-312.pyc
+    │   ├── models.cpython-312.pyc
+    │   └── urls.cpython-312.pyc
+    ├── tests.py
+    ├── urls.py
+    └── views.py
+
+35 directories, 131 files

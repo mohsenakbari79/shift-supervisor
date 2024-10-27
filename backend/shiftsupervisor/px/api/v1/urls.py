@@ -1,6 +1,8 @@
-from . import views
+from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
+from . import views
+from .excel_views import export_to_excel
 
 router = DefaultRouter()
 
@@ -26,4 +28,10 @@ router.register("u970", views.U970ModelViewSet, basename="u970")
 router.register("unit", views.DailyDataPxViewSet, basename="unit")
 
 
-urlpatterns = router.urls
+# Combine router URLs with additional paths
+urlpatterns = [
+    path("", include(router.urls)),  # Include all the router URLs
+    path(
+        "download_monthly_data/", export_to_excel, name="download_monthly_data"
+    ),  # Excel download path
+]
