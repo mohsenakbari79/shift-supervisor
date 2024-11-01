@@ -188,7 +188,7 @@ class TankInventory(models.Model):
     produced = models.ForeignKey(Product,on_delete=models.CASCADE,verbose_name="مقدار تولید (تن)", null=True, blank=True)
     service = models.ForeignKey(AdditionalServices,on_delete=models.CASCADE,verbose_name="مصرف سرویس (تن)", null=True, blank=True)
     inventory = models.FloatField(verbose_name="موجودی (تن)", null=True, blank=True)
-    percentage = models.FloatField(verbose_name="درصد موجودی", null=True, blank=True)  # فقط برای مخازن سایر
+    percentage = models.FloatField(verbose_name="درصد موجودی", null=True, blank=True)  
     date = models.DateField(auto_now_add=True, verbose_name="تاریخ")
 
     def clean(self):
