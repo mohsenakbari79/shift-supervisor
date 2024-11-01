@@ -32,8 +32,9 @@ class TankOperation(models.Model):
 
 
 class GlobalFuelAnalysis(models.Model):
-    rvp = models.FloatField(null=True, blank=True)       # فیلد RVP
-    ts_lte = models.FloatField(null=True, blank=True)    # فیلد TS-LTE
+    rvp = models.FloatField(null=True, blank=True)       
+    ts_lte = models.FloatField(null=True, blank=True)
+    date = models.DateField(null=True, blank=True)
 
     def __str__(self):
         return f"Global Data - RVP: {self.rvp}, TS-LTE: {self.ts_lte}"
