@@ -47,7 +47,11 @@ urlpatterns = [
     path("btx/", include("btx.urls")),
     path("px/", include("px.urls")),
     path("reforming/", include("reforming.urls")),
+    
     # path("tanks/", include("tanks.urls")),
+    # path("feed/", include("feed.urls")),
+     path('reports/', include('reports.urls')),
+    
 
     
     # schema

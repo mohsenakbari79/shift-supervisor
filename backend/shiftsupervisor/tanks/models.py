@@ -1,53 +1,121 @@
 from django.db import models
 
+
+class NameService(models.Model):
+    name = models.CharField(max_length=20, unique=True)
+    ename = models.CharField(max_length=50, null=True,blank=True)
+    pname = models.CharField(max_length=50, null=True,blank=True)
+    comment =models.CharField(max_length=100, null=True,blank=True)
+
+
+
 # Create your models here.
 class AdditionalServices(models.Model):
-    name = models.charfield(max_length=50)
-    description = models.CharField(max_length=100,null=True, blank=True)
+    name = models.OneToOneField(
+        NameService,
+        on_delete=models.CASCADE,
+        unique=True,
+        related_name = "service"
+    )    
+    related_name = "servicename"
     
     def __str__(self):
         return self.name
     
 class ServiceConsumedAndShippedDaily(models.Model):
-    additionalServices  = models.ForeignKey(Product, on_delete=models.CASCADE)
-    shippedaily = models.FloatField(defualt=0,null=True, blank=True)
+    additionalServices  = models.ForeignKey(AdditionalServices, on_delete=models.CASCADE,related_name="service_report")
+    shippedaily = models.FloatField(default=0, null=True, blank=True)
     # Consumed
     date = models.DateField(verbose_name="تاریخ")
     pass
     
 
 class Product(models.Model):
-    name = models.charfield(max_length=50)
-    description = models.CharField(max_length=100,null=True, blank=True)
+    parent_product = models.ForeignKey(
+        'self',  # Self-referential ForeignKey for hierarchical relationships
+        on_delete=models.CASCADE,
+        null=True,  # Allow root products without a parent
+        blank=True, # Optional to be filled
+        related_name='sub_products' # Optional: makes querying easier
+    )
+    name = models.OneToOneField(
+        NameService,
+        on_delete=models.CASCADE,
+        unique=True,
+        related_name = "product"
+    )
+
+    def __str__(self):
+        return self.name  # Representing the object
     
     
-class ProductProducedAndShippeDaily(models):
-    product  = models.ForeignKey(Product, on_delete=models.CASCADE)
-    produced = models.FloatField(defualt=0,null=True, blank=True)
-    shippedaily = models.FloatField(defualt=0,null=True, blank=True)
+    
+class IntermediateProducts(models.Model):
+    name = models.OneToOneField(
+        NameService,
+        on_delete=models.CASCADE,
+        unique=True,
+        related_name = "intermediateproduct"
+    )
+    
+class UtilitySystem(models.Model):
+    name = models.OneToOneField(
+        NameService,
+        on_delete=models.CASCADE,
+        unique=True,
+        related_name = "otherproduct"
+    )
+
+class InventoryUtilitySystem(models.Model):
+    utility_system = models.ForeignKey(
+        UtilitySystem,
+        on_delete=models.CASCADE,
+        related_name="inventory_records"
+    )
+    date = models.DateField(verbose_name="Date")
+    quantity = models.FloatField(verbose_name="Inventory Quantity")
+
+    class Meta:
+        ordering = ['-date']  # رکوردها را براساس تاریخ از جدید به قدیم مرتب می‌کند
+
+    def __str__(self):
+        return f"{self.utility_system.name} - {self.date}: {self.quantity} units"
+
+
+    
+
+class ProductProducedAndShippeDaily(models.Model):
+    product  = models.ForeignKey(Product, on_delete=models.CASCADE,related_name="product_report")
+    IntermediateProducts  = models.ForeignKey(Product, on_delete=models.CASCADE,null=True,blank=True)
+
+    produced = models.FloatField(default=0,null=True, blank=True)
+    shippedaily = models.FloatField(default=0,null=True, blank=True)
 
     date = models.DateField(verbose_name="تاریخ")
 
-    pass
+    def clean(self):
+        # بررسی اینکه حداقل یکی از فیلدها پر باشد
+        if not self.product and not self.intermediate_products:
+            raise ValidationError("حداقل یکی از فیلدهای 'product' یا 'intermediate_products' باید پر باشد.")
 
-class ProductCombination(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    loading = ProductProducedAndShippeDaily(ProductProducedAndShippeDaily,on_delete=models.CASCADE,null=True, blank=True)
-    quantity = models.FloatField(defualt=0)
-    
-    pass
+    def save(self, *args, **kwargs):
+        # اجرای اعتبارسنجی‌ها قبل از ذخیره
+        self.clean()
+        super().save(*args, **kwargs)
+
+
  
 
-class Tanker(models.Medel):
+class Tanker(models.Model):
     name = models.CharField(max_length=50)
-    quantity = models.IntgerField(verbose_name="quantity",defualt=0)
-    weight = models.FloatField(defualt=0)
-    pass
+    quantity = models.IntegerField(verbose_name="quantity", default=0)
+    weight = models.FloatField(default=0)
+    
 
 
 
 class CargoLoading(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE,related_name='CargoLoading')
     ship_quantity = models.FloatField(null=True, blank=True, verbose_name="Ship Quantity")
     truck_quantity = models.FloatField(null=True, blank=True, verbose_name="Truck Quantity")
     tanker = models.ForeignKey(Tanker, on_delete=models.CASCADE, null=True, blank=True)
@@ -78,10 +146,26 @@ class CargoLoading(models.Model):
             return f"{self.product.name} - Total: {self.total_quantity}"
 
 
-class Combinations(models.Model):
-    # F:product
-    # subproduct manytoone
-    pass
+class SubProductCargoLoading(models.Model):
+    # ارتباط با عملیات بارگیری اصلی
+    cargo_loading = models.ForeignKey(
+        CargoLoading,
+        on_delete=models.CASCADE,
+        related_name='sub_CargoLoading'
+    )
+
+    # زیرمحصولی که بارگیری می‌شود
+    sub_product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE,
+        related_name='sub_loadings'
+    )
+
+    # مقدار بارگیری زیرمحصول خاص
+    quantity = models.FloatField(verbose_name="Quantity", default=0)
+
+    def __str__(self):
+        return f"{self.sub_product.name} - {self.quantity} units in {self.cargo_loading}"
 
 
 class Tank(models.Model):
@@ -117,36 +201,5 @@ class TankInventory(models.Model):
     def __str__(self):
         return f"Inventory of {self.tank.name} on {self.date}"
     
-    pass
-
-
-
-class Feed(models.Model):
-    FEED_TYPES = [
-        ('gas_condensate', 'میعانات گازی'),
-        ('raw_pyrolysis_gasoline', 'بنزین پیرولیز خام'),
-    ]
-
-    date = models.DateField(auto_now_add=True, verbose_name="تاریخ")
-    feed_type = models.CharField(max_length=30, choices=FEED_TYPES, verbose_name="نوع خوراک")
-    quantity = models.FloatField(verbose_name="مقدار (تن)")
-
-    def __str__(self):
-        return f"{self.get_feed_type_display()} - {self.quantity} تن در تاریخ {self.date}"
-    
-    
-    
     
 
-class FeedReception(models.Model):
-    feed = models.ForeignKey(Feed, on_delete=models.CASCADE, verbose_name="نوع خوراک")
-    tank = models.ForeignKey(Tank, on_delete=models.SET_NULL, null=True, verbose_name="تانک")
-    phase = models.CharField(max_length=50, verbose_name="فاز", null=True, blank=True)
-    date = models.DateField(auto_now_add=True, verbose_name="تاریخ دریافت")
-    daily_total = models.FloatField(default=0, verbose_name="جمع روزانه (تن)")
-    monthly_total = models.FloatField(default=0, verbose_name="جمع ماهانه (تن)")
-    connect_time = models.TimeField(null=True, blank=True, verbose_name="زمان وصل")
-    disconnect_time = models.TimeField(null=True, blank=True, verbose_name="زمان قطع")
-
-    def __str__(self):
-        return f"{self.feed} - {self.tank or 'بدون تانک'} - {self.date}"

@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'px.apps.PxConfig',
     'reforming.apps.ReformingConfig',
     'tanks.apps.TanksConfig',
+    'feed.apps.FeedConfig',
+    
     
     # installed apps
     'rest_framework',
